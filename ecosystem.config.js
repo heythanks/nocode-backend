@@ -25,7 +25,7 @@ module.exports = {
       user : 'root',
       //服务器ip
       host : '8.142.66.4',
-      
+      ssh_options: 'StrictHostKeyChecking=no',
       //远程分支
       ref  : 'origin/master',
       //仓库地址
