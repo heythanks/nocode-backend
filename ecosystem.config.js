@@ -30,7 +30,7 @@ module.exports = {
       //仓库地址
       repo : 'git@github.com:heythanks/nocode-backend.git',
       //项目要部署到服务器上的位置，PM2默认会部署到该路径的source子文件夹下
-      path : '/usr/local/html',
+      path : '/usr/local/nginx/html',
       //服务器下载到最新的代码之后要执行命令
       'post-deploy' : 'yarn && pm2 restart ecosystem.config.js --env production',
     }
