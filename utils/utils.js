@@ -96,14 +96,14 @@ const writePages = function (options, fileName) {
             });
             promiseArr.push(jsonFilePromise);
             break;
-        };
-      };
+        }
+      }
       Promise.all(promiseArr).then(resolve => {
         resolveWrite('写入成功')
       });
     } catch (err) {
       rejectWrite(JSON.stringify(err))
-    };
+    }
 
   });
 };

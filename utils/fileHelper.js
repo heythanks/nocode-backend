@@ -37,7 +37,7 @@ const isDirectory = function (pt) {
     result = stat.isDirectory()
   } catch (err) {
     console.log(err);
-  };
+  }
   return result;
 };
 /**
@@ -57,7 +57,7 @@ const isFile = function (pt) {
     result = stat.isFile()
   } catch (err) {
     console.log(err);
-  };
+  }
   return result;
 };
 const exist = function (pt) {
@@ -66,7 +66,7 @@ const exist = function (pt) {
     return true;
   } catch (err) {
     return false;
-  };
+  }
 };
 /**
  * @name 罗婵
@@ -96,7 +96,7 @@ const deepCloneDirectory = function (origin, target) {
         fs.mkdirSync(newTarget);
         deepCloneDirectory(newPath, newTarget);
         return false;
-      };
+      }
       const resolvePath = path.join(origin, files[i]);
       //TODO：现在为串行读写，后期可优化为并行读写
       const fileContent = fs.readFileSync(resolvePath, 'utf-8');
