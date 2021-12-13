@@ -44,6 +44,8 @@ const receiveJsonToFile = async (ctx) => {
       cache[`${ele.type}Stack`].push(ele.path);
     }
   });
+  console.log(9999);
+  console.log(9999);
   //对表格和分页组件进行绑定
   const minLen = Math.min(cache.tableStack.length, cache.paginationStack.length);
   const tableMapPagination = new Map();

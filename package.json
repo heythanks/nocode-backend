@@ -36,15 +36,16 @@
     "husky": "^7.0.4",
     "eslint": "^8.4.1"
   },
-  "lint-staged": {
-    "*.{js}": [
-      "eslint --fix --ext .js ./controllers ./routes ./utils",
-      "git add"
-    ]
-  },
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged"
     }
+  },
+  "lint-staged": {
+    "*.js": [
+      "npx eslint --fix --ext .js ./controllers ./routes ./utils",
+      "git add"
+    ]
   }
+  
 }
