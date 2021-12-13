@@ -15,7 +15,7 @@
     "create": "node shell/createTemplate.js",
     "deleteSub": "node shell/removeSubmodule",
     "diy": "node gitDiy.js",
-    "lint": "npx eslint --fix --ext .js ./controllers ./routes ./utils"
+    "lint:js": "npx eslint --fix --ext .js ./controllers ./routes ./utils"
   },
   "dependencies": {
     "archiver": "^5.3.0",
@@ -31,21 +31,9 @@
     "simple-git": "^2.47.0"
   },
   "devDependencies": {
-    "nodemon": "^2.0.15",
-    "lint-staged": "^12.1.2",
+    "eslint": "^8.4.1",
     "husky": "^7.0.4",
-    "eslint": "^8.4.1"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
-  "lint-staged": {
-    "*.js": [
-      "npx eslint --fix --ext .js ./controllers ./routes ./utils",
-      "git add"
-    ]
+    "lint-staged": "^12.1.2",
+    "nodemon": "^2.0.15"
   }
-  
 }
