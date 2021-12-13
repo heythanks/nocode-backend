@@ -74,13 +74,15 @@ const getHtmlEntity = function () {
 const writePages = function (options, fileName) {
   const newOpts = Object.assign({}, FILE_CONTENT_MAP, options);
   const promiseArr = [];
+  let jsonFilePromise = null;
+  let vueFilePromise = null;
   return new Promise((resolveWrite, rejectWrite) => {
     try {
       for (let key in newOpts) {
         switch (key) {
           case 'vueFile':
             //vue文件写入;
-            const vueFilePromise = new Promise((resolve, reject) => {
+            vueFilePromise = new Promise((resolve, reject) => {
               fs.writeFile(`${fileName}/index.vue`, newOpts[key], function () {
                 resolve();
               });
@@ -89,7 +91,7 @@ const writePages = function (options, fileName) {
             break;
           case 'jsonFile':
             //json文件写入;
-            const jsonFilePromise = new Promise((resolve, reject) => {
+            jsonFilePromise = new Promise((resolve, reject) => {
               fs.writeFile(`${fileName}/index.json`, newOpts[key], function () {
                 resolve();
               });

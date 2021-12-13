@@ -26,7 +26,7 @@ const parseJson = function (str) {
   try {
     let router = str.match(/\[(.|\n)*\]/)[0];
     if (router) {
-      const list = [...router.matchAll(/(path\:(.[^,]*))|(name\:(.[^,]*))/g)];
+      const list = [...router.matchAll(/(path:(.[^,]*))|(name:(.[^,]*))/g)];
       const reg = /'|\s|"/g;//去除前后空格和引号
       const comList = [];
       const routerList = [];
@@ -119,7 +119,7 @@ const git = {
         let fileStr = '';
         try {
           fileStr = fs.readFileSync(`${ptGit}/${ele}/${ROUTER_PATH}`, 'utf-8');
-        } catch (err) { }
+        } catch (err) { console.log(err) }
         gitJsonObj[ele] = parseJson(fileStr);
       }
     });

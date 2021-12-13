@@ -50,7 +50,7 @@ const isDirectory = function (pt) {
  * @exception 
  */
 const isFile = function (pt) {
-  const stat = null;
+  let stat = null;
   let result = false;
   try {
     stat = fs.statSync(pt);
@@ -62,7 +62,7 @@ const isFile = function (pt) {
 };
 const exist = function (pt) {
   try {
-    accessSync(pt, fs.constants.R_OK);
+    fs.accessSync(pt, fs.constants.R_OK);
     return true;
   } catch (err) {
     return false;

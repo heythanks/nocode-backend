@@ -10,7 +10,7 @@ module.exports = {
     'ecmaVersion': 2020
   },
   'rules': {
-    'no-console': 'error',
+    'no-console': 'off',
     'no-debugger': 'off',
     'dot-notation': 'off',
     'no-unused-vars': 'off',
