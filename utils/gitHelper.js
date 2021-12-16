@@ -26,7 +26,7 @@ const parseJson = function (str) {
   try {
     let router = str.match(/\[(.|\n)*\]/)[0];
     if (router) {
-      const list = [...router.matchAll(/(path\:(.[^,]*))|(name\:(.[^,]*))/g)];
+      const list = [...router.matchAll(/(path:(.[^,]*))|(name:(.[^,]*))/g)];
       const reg = /'|\s|"/g;//去除前后空格和引号
       const comList = [];
       const routerList = [];
@@ -41,7 +41,7 @@ const parseJson = function (str) {
           currentStr = ele[2];
           currentStr = currentStr.replace(reg, '');
           routerList.push(currentStr);
-        };
+        }
       });
       const routerMap = {}
       comList.forEach((ele, index) => {
@@ -76,7 +76,7 @@ const git = {
         resolve()
       }catch(err) {
         reject(err)
-      };
+      }
     });
     const commitPromise = new Promise((resolve, reject) => {
       try {
@@ -86,7 +86,7 @@ const git = {
         resolve()
       }catch(err) {
         reject(err)
-      };
+      }
     });
     const pushPromise = new Promise((resolve, reject) => {
       try {
@@ -96,7 +96,7 @@ const git = {
         resolve()
       }catch(err) {
         reject(err)
-      };
+      }
     });
     return Promise.all([addPromise, commitPromise, pushPromise])
   },
@@ -119,7 +119,7 @@ const git = {
         let fileStr = '';
         try {
           fileStr = fs.readFileSync(`${ptGit}/${ele}/${ROUTER_PATH}`, 'utf-8');
-        } catch (err) { };
+        } catch (err) { console.log(err) }
         gitJsonObj[ele] = parseJson(fileStr);
       }
     });
@@ -174,7 +174,7 @@ const git = {
       error(err);
       errorResponse(ctx, '子仓库代码推送失败');
       return false;
-    };
+    }
   }
 };
 

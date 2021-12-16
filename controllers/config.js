@@ -42,8 +42,10 @@ const receiveJsonToFile = async (ctx) => {
   comJSON.forEach((ele, index) => {
     if (oneTo1.indexOf(ele.type) > -1) {
       cache[`${ele.type}Stack`].push(ele.path);
-    };
+    }
   });
+  console.log(9999);
+  console.log(9999009);
   //对表格和分页组件进行绑定
   const minLen = Math.min(cache.tableStack.length, cache.paginationStack.length);
   const tableMapPagination = new Map();
@@ -57,7 +59,7 @@ const receiveJsonToFile = async (ctx) => {
     const currentPagination = cache.paginationStack.shift();
     tableMapPagination.set(currentTable, currentPagination);
     paginationMapTable.set(currentPagination, currentTable)
-  };
+  }
 
   comJSON.forEach((ele, index) => {
     const mapData = {
@@ -67,7 +69,7 @@ const receiveJsonToFile = async (ctx) => {
     const linkPath = mapData[ele.type].get(ele.path);
 
     //绑定关联的分页组件
-    ele.linkPath = linkPath ?? null;
+    ele.linkPath = linkPath || null;
     if (ele?.fetchConfig?.url) {
       if (!importUtil?.fetch) {
         importUtil.fetch = true
@@ -149,14 +151,14 @@ const postConfigPushGit = async (ctx) => {
   } else {
     //子仓库存在，拉最新代码后重写index.json, 进入子仓库进行代码拉取
     operateResult = git.pullMaster(pt, ctx);
-  };
+  }
   if (!operateResult) return operateResult;
   //重写gitJson数据
   git.rewriteGitJson();
   //判断路由是否冲突，如果冲突则阻断操作
   if (Object.keys(gitJson[repositoryName] || []).indexOf(routerName.trim()) > -1) {
     return errorResponse(ctx, '路由冲突了');
-  };
+  }
   if (/^\d+/.test(routerName.trim())) {
     //在修改路由文件时，将路由名称设置为变量，不符合js变量声明规范
     return errorResponse(ctx, '路由不能以数字开头');
@@ -202,7 +204,7 @@ const putChangeToGits = async (ctx) => {
     successResponse(ctx, { msg: 'git提交成功' })
   } catch (err) {
     error(err);
-  };
+  }
 };
 /**
  * @name 罗婵
