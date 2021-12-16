@@ -33,6 +33,8 @@
     "simple-git": "^2.47.0"
   },
   "devDependencies": {
+    "@commitlint/cli": "^15.0.0",
+    "@commitlint/config-conventional": "^15.0.0",
     "eslint": "^8.4.1",
     "husky": "^7.0.4",
     "lint-staged": "^12.1.2",
