@@ -69,7 +69,7 @@ const receiveJsonToFile = async (ctx) => {
     const linkPath = mapData[ele.type].get(ele.path);
 
     //绑定关联的分页组件
-    ele.linkPath = linkPath ?? null;
+    ele.linkPath = linkPath || null;
     if (ele?.fetchConfig?.url) {
       if (!importUtil?.fetch) {
         importUtil.fetch = true
