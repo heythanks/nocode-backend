@@ -1,0 +1,8 @@
+definitions:
+  pageSize:
+    name: pageSize
+    description: 页面容量
+    in: query
+    required: true
+    type: number
+    default: 10
