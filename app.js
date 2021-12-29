@@ -10,7 +10,9 @@ const table = require('./routes/table');
 const config = require('./routes/config');
 
 const port = 3000;
-const {error} = require('./utils/log4j.js');
+const { error } = require('./utils/log4j.js');
+const { koaSwagger } = require('koa2-swagger-ui')
+const swagger = require('./swagger/swagger.js');
 
 
 
@@ -25,6 +27,8 @@ app.use(koaBody({
 
 router.use(config.routes(), config.allowedMethods());
 router.use(table.routes(), table.allowedMethods());
+app.use(swagger.routes(), swagger.allowedMethods())
+
 app.use(router.routes(), router.allowedMethods())
 //错误捕获
 app.on('error', (err, ctx) => {
@@ -32,6 +36,12 @@ app.on('error', (err, ctx) => {
   console.log('server error', err, ctx)
 })
 // app.use(logger());
+app.use(koaSwagger({
+  routePrefix: '/swagger', // 接口文档访问地址
+  swaggerOptions: {
+    url: '/swagger.json', // example path to json 其实就是之后swagger-jsdoc生成的文档地址
+  }
+}))
 
 app.use(json());
 
