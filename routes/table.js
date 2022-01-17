@@ -26,5 +26,6 @@ router.prefix('/api/table');
 router.get('/list1', async (ctx) => tableController.getTableList(ctx));
 
 router.get('/list2', async (ctx) => tableController.getTableList(ctx))
+router.post('/list6', async (ctx) => tableController.postTableList(ctx))
 
 module.exports = router;
