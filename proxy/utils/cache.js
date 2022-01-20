@@ -1,7 +1,13 @@
 class Cache {
 	constructor() {
 		this.map = Object.create(null);
-		this.timeMap = Object.create(null)
+		this.baseURL = ''
+	}
+	getBaseURL() {
+		return this.baseURL
+	}
+	setBaseURL(baseURL) {
+		this.baseURL = baseURL
 	}
 	get (host) {
 		// 获取对应的session

@@ -1,0 +1,7 @@
+{
+	"host": "http://127.0.0.1:7001",
+	"path": "/diy/config/downloadPage",
+	"loginPath": "/baseline/upms-provider/platform/login",
+	"loginContent": {"password": "supconit"},
+	"queryContent": {"commonJSON": {"test": "0000"}}
+}
