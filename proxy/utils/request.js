@@ -4,7 +4,7 @@ const axios = require('axios').default;
 // import { copyTextToCilpBoard } from '@/utils/common'
 const path = require('path');
 const Cache = require(path.resolve(__dirname, 'cache.js'))
-const baseURL = Cache.getBaseURL()
+const baseURL = ''
 
 
 function resolveErrorCode (res) {

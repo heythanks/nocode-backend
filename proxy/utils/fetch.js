@@ -1,4 +1,5 @@
-const request = require('request')
+const path = require('path')
+const request = require(path.resolve(__dirname, '../utils/request'))
 
 // 返回res.data.data
 const fetch = (options) => new Promise((resolve, reject) => {
