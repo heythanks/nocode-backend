@@ -17,7 +17,7 @@ const loginController = createProxyMiddleware({
 	selfHandleResponse: true,
 	logLevel: 'debug',
 	cookieDomainRewrite: {
-		"*": "localhost"
+		"*": ""
 	},
 	onProxyReq: (proxyReq, req, res) => {
 		// 代理请求拦截器
@@ -27,6 +27,9 @@ const loginController = createProxyMiddleware({
 
 		proxyReq.path = proxyReq.path.split(req.originalUrl)[0]
 		currentCookie = proxyReq.getHeader('Cookie')
+		proxyReq.setHeader('Cookie','')
+		console.log(chalk.green(currentCookie, '我得到的cookie'))
+
     const contentType = proxyReq.getHeader('Content-Type');
 		const writeBody = (bodyData) => {
 			console.log(chalk.red(bodyData))
@@ -47,10 +50,9 @@ const loginController = createProxyMiddleware({
 		const exchange = `[代理地址映射] ${req.method} ${req.path} -> ${proxyRes.req.protocol}//${proxyRes.req.host}${proxyRes.req.path} [${proxyRes.statusCode}]`;
 		console.log(chalk.yellow(exchange))
 		const proxyResponseObj = JSON.parse(buffer.toString('utf8'))
-		const cookie = proxyRes.headers['set-cookie'];
-		//TODO: 通过http-proxy-middleware代理的接口，在响应中没有拿到setCookie
-		proxyRes.headers['set-cookie']
-		console.log(chalk.red(cookie), 'cookiecookie')
+		const cookie = proxyRes.headers['set-cookie'];//代理接口响应的cookie
+		// delete proxyRes.headers['x-removed']
+		console.log(res.getHeader('set-cookie'), '999999')
 		if(proxyResponseObj.code === "200") {
 			//登录成功将session和登录相关的信息存下来
 			globUserCache.set({
